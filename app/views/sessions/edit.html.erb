@@ -1,0 +1,14 @@
+<h1>Editing session id:<%= session.id %></h1>
+
+<% form_for(@session) do |f| %>
+  <%= f.error_messages %>
+
+  <p><%= f.label :name, 'Text' %> <%= f.text_field :name %></p>
+  <p><%= f.label :max_attendees, 'Space' %> <%= f.text_field :max_attendees %></p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @session %> |
+<%= link_to 'Back', sessions_path %>

@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <title>MB Patrol</title>
+    <title>MB Patrol: CPR</title>
     <style type="text/css" media="screen">
       body {
         margin: 0;
@@ -55,13 +55,8 @@
       }
       
 
-      #header, #about, #getting-started {
-        padding-left: 75px;
-        padding-right: 30px;
-      }
-
-
       #header {
+        background-image: url("images/rails.png");
         background-repeat: no-repeat;
         background-position: top left;
         height: 64px;
@@ -71,41 +66,6 @@
         color: #888;
         font-weight: normal;
         font-size: 16px;
-      }
-      
-      
-      #about h3 {
-        margin: 0;
-        margin-bottom: 10px;
-        font-size: 14px;
-      }
-      
-      #about-content {
-        background-color: #ffd;
-        border: 1px solid #fc0;
-        margin-left: -11px;
-      }
-      #about-content table {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        font-size: 11px;
-        border-collapse: collapse;
-      }
-      #about-content td {
-        padding: 10px;
-        padding-top: 3px;
-        padding-bottom: 3px;
-      }
-      #about-content td.name  {color: #555}
-      #about-content td.value {color: #000}
-      
-      #about-content.failure {
-        background-color: #fcc;
-        border: 1px solid #f00;
-      }
-      #about-content.failure p {
-        margin: 0;
-        padding: 10px;
       }
       
       
@@ -127,7 +87,7 @@
       }
       #getting-started ol {
         margin-left: 0;
-        padding-left: 0;
+        padding-left: 2em;
       }
       #getting-started li {
         font-size: 18px;
@@ -180,25 +140,6 @@
     <script type="text/javascript" src="javascripts/prototype.js"></script>
     <script type="text/javascript" src="javascripts/effects.js"></script>
     <script type="text/javascript">
-      function about() {
-        if (Element.empty('about-content')) {
-          new Ajax.Updater('about-content', 'rails/info/properties', {
-            method:     'get',
-            onFailure:  function() {Element.classNames('about-content').add('failure')},
-            onComplete: function() {new Effect.BlindDown('about-content', {duration: 0.25})}
-          });
-        } else {
-          new Effect[Element.visible('about-content') ? 
-            'BlindUp' : 'BlindDown']('about-content', {duration: 0.25});
-        }
-      }
-      
-      window.onload = function() {
-        $('search-text').value = '';
-        $('search').onsubmit = function() {
-          $('search-text').value = 'site:rubyonrails.org ' + $F('search-text');
-        }
-      }
     </script>
   </head>
   <body>
@@ -207,45 +148,60 @@
         <ul id="sidebar-items">
         
           <li>
-            <h3>Can't tell what's going on here?</h3>
-	    <p>
-	      Unless you got here by accident, you've been given the
-	      Magic Word that gains you access to the riches within.
-	      If you don't know it then there's nothing to see here,
-	      move along please.
+            <h3>Contact the trainers</h3>
+	    <p>... if you have to. The point of this web-signup is to
+	      save one trainer fielding 100 phone calls, so go
+	      easy.
 	    </p>
+            <ul class="links">
+              <li><a href="mailto:erica@renlabs.com">Erica Work</a></li>
+            </ul>
           </li>
 
+	  <li>
+	    <h3>Can't do any session?</h3>
+	    <p>
+	      OK, legitimate reason to contact the trainer!  We'll
+	      work out some make-up classes if necessary.
+	    </p>
+	  </li>
         </ul>
       </div>
 
       <div id="content">
         <div id="header">
-          <h1>Closed to public</h1>
-          <h2>Avalanche danger, do not enter</h2>
+          <h1>CPR Class Signup</h1>
+          <h2>Mt. Baker Ski Patrol</h2>
         </div>
 
-        <div id="about">
-          <h3><a href="rails/info/properties"
-		 onclick="about(); return false">about</a></h3>
-          <div id="about-content" style="display: none"></div>
-        </div>
-        
         <div id="getting-started">
-          <h1>Duck the rope</h1>
-          <h2>Continue on despite the danger</h2>
-	  <form action="/cpr/signup" method="get">
-            <ol>          
-              <li>
-		<h2>Enter the magic word</h2>
-		<input type="text" name="magicword"/>
-              </li>
+          <h1>Getting in</h1>
+          <h2>Here&rsquo;s how to get signed up for a CPR session:</h2>
+          
+          <ol>          
+            <li>
+              <h2>Click to highlight your name</h2>
+	      <select size="5">
+		<% @people.sort{|a,b| a.name <=> b.name }.each do |person| %>
+		<option id="<%= person.id %>"><%= person.name %></option>
+		<% end %>
+	      </select>
+            </li>
+
+            <li>
+              <h2>Click to highlight a session</h2>
+	      <select size="4">
+		<% @sessions.sort{|a,b| a.name <=> b.name }.each do |session| %>
+		<option id="<%= session.id %>"><%= session.description %></option>
+		<% end %>
+	      </select>
+            </li>
             
-              <li>
-		<input type="submit" value="Okay"/>
-              </li>
-            </ol>
-	  </form>
+            <li>
+              <h2>Click Okay</h2>
+	      <input type="submit" value="Okay">
+            </li>
+          </ol>
         </div>
       </div>
       
