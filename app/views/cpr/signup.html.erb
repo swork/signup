@@ -175,26 +175,19 @@
         </div>
 
         <div id="getting-started">
+	  <% form_tag '/cpr/record_assignment' do -%>
           <h1>Getting in</h1>
           <h2>Here&rsquo;s how to get signed up for a CPR session:</h2>
           
           <ol>          
             <li>
               <h2>Click to highlight your name</h2>
-	      <select size="5">
-		<% @people.sort{|a,b| a.name <=> b.name }.each do |person| %>
-		<option id="<%= person.id %>"><%= person.name %></option>
-		<% end %>
-	      </select>
+	      <%= select_tag("person_id", @people_options_string, :size => "5") %>
             </li>
 
             <li>
               <h2>Click to highlight a session</h2>
-	      <select size="4">
-		<% @sessions.sort{|a,b| a.name <=> b.name }.each do |session| %>
-		<option id="<%= session.id %>"><%= session.description %></option>
-		<% end %>
-	      </select>
+	      <%= select_tag("session_id", @session_options_string, :size => "4") %>
             </li>
             
             <li>
@@ -202,6 +195,7 @@
 	      <input type="submit" value="Okay">
             </li>
           </ol>
+	  <% end -%>
         </div>
       </div>
       
