@@ -5,8 +5,12 @@ class Session < ActiveRecord::Base
   validates_presence_of :name
   validates_numericality_of :max_attendees
 
-  def description
-    remain = max_attendees - people.size()
-    return "#{name} (#{remain} spots left)"
+  def space_remaining
+    max_attendees - people.size()
   end
+
+  def description
+    return "#{name} (#{space_remaining} spots left)"
+  end
+
 end
