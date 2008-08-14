@@ -7,17 +7,17 @@
 #   column: value
 
 session-1:
-  name: "Session 1: October 33rd 8am-11:59am"
+  name: "A Team: October 11th 9am-12pm"
   max_attendees: 15
 
 session-2:
-  name: "Session 2: October 33rd 1pm-4:59pm"
+  name: "B Team: October 11th 1pm-4pm"
   max_attendees: 15
 
 session-3:
-  name: "Session 3: October 34th 8am-11:59am"
+  name: "C Team: October 18th 9am-12pm"
   max_attendees: 15
 
 session-4:
-  name: "Session 4: October 34th 1pm-4:59pm"
+  name: "D Team: October 18th 1pm-4pm"
   max_attendees: 15
