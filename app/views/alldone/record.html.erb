@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <title>MB Patrol: CPR</title>
+    <title>MB Patrol: <%= @person.name %> CPR signup completed</title>
     <style type="text/css" media="screen">
       body {
         margin: 0;
@@ -66,7 +66,6 @@
         font-weight: normal;
         font-size: 16px;
       }
-      
       
       #getting-started {
         border-top: 1px solid #ccc;
@@ -131,56 +130,30 @@
     <div id="page">
       <div id="sidebar">
         <ul id="sidebar-items">
-        
           <li>
-            <h3>Contact the trainers</h3>
-	    <p>... if you have to. The point of this web-signup is to
-	      save one trainer fielding 100 phone calls, so go
-	      easy.
-	    </p>
-            <ul class="links">
-              <li><a href="mailto:erica@renlabs.com">Erica Work</a></li>
-            </ul>
-          </li>
-
-	  <li>
-	    <h3>Can't do any session?</h3>
+            <h3>Thanks!</h3>
 	    <p>
-	      OK, legitimate reason to contact the trainer!  We'll
-	      work out some make-up classes if necessary.
+	      Signing up this way helps save the sanity (and
+	      cell-phone minutes) of the trainers -- it's a big help.
+	      Thank you.
 	    </p>
-	  </li>
+          </li>
         </ul>
       </div>
 
       <div id="content">
         <div id="header">
-          <h1>CPR Class Signup</h1>
-          <h2>Mt. Baker Ski Patrol</h2>
+          <h1>You're signed up</h1>
+          <h2>for the CPR class</h2>
         </div>
 
         <div id="getting-started">
-	  <% form_tag '/alldone/record' do -%>
-          <h1>Getting in</h1>
-          <h2>Here&rsquo;s how to get signed up for a CPR session:</h2>
-          
-          <ol>          
-            <li>
-              <h2>Click to highlight your name</h2>
-	      <%= select_tag("person_id", @people_options_string, :size => "5") %>
-            </li>
-
-            <li>
-              <h2>Click to highlight a session</h2>
-	      <%= select_tag("session_id", @session_options_string, :size => "4") %>
-            </li>
-            
-            <li>
-              <h2>Click Okay</h2>
-	      <input type="submit" value="Okay"> <p>(or just close this browser window to quit without making a reservation.)
-            </li>
-          </ol>
-	  <% end -%>
+          <h1>All done</h1>
+	  <p>
+	    <%= @person.name %> has a spot reserved for
+	    <%= @session.name %>.  You can now close this browser
+	    window.
+	  </p>
         </div>
       </div>
       
@@ -188,3 +161,4 @@
     </div>
   </body>
 </html>
+
