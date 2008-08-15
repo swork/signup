@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_magicwords
-    ['powder']
+    ['ropeline']
   end
 
   # In lieu of full legitimate authentication, just keep a set of
