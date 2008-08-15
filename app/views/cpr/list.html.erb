@@ -1,0 +1,15 @@
+<body>
+  <h1>Roster of classes</h1>
+  <h2>As of <%= @now %></h2>
+  <% for s in @sessions do %>
+  <h3><%= s.name %></h3>
+  <ol>
+    <% for p in @people.select {|p| p.session_id == s.id } do %>
+    <li><%= p.name %></li>
+    <% end %>
+  </ol>
+  <% end %>
+
+  <br/>
+  <%= link_to 'Back to management', "/cpr/manage" %>
+</body>

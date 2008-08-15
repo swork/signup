@@ -221,21 +221,19 @@
       </div>
 
       <div id="content">
-        <div id="header">
+        <div id="header" onclick="about(); return false">
           <h1>Closed to public</h1>
           <h2>Avalanche danger, do not enter</h2>
         </div>
 
         <div id="about">
-          <h3><a href="rails/info/properties"
-		 onclick="about(); return false">about</a></h3>
           <div id="about-content" style="display: none"></div>
         </div>
         
         <div id="getting-started">
           <h1>Duck the rope</h1>
           <h2>Continue on despite the danger</h2>
-	  <form action="/cpr/go" method="get">
+	  <form action="/cpr/dispatch" method="get">
             <ol>          
               <li>
 		<h2>Enter the magic word</h2>

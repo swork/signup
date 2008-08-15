@@ -24,6 +24,10 @@ class ApplicationController < ActionController::Base
     ['ropeline']
   end
 
+  def magicwords
+    management_magicwords + user_magicwords
+  end
+
   # In lieu of full legitimate authentication, just keep a set of
   # obscure magicwords and determine access and initial dispatch on
   # this value.
