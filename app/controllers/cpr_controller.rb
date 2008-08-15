@@ -1,9 +1,9 @@
 class CprController < ApplicationController
 
   def dispatch
-    if management_magicwords.include? @magicword
+    if @@management_magicwords.include? @magicword
       redirect_to :action => "manage"
-    elsif user_magicwords.include? @magicword
+    elsif @@user_magicwords.include? @magicword
       redirect_to :action => "signup"
     else
       redirect_to "/"
@@ -11,7 +11,7 @@ class CprController < ApplicationController
   end
 
   def signup
-    if not magicwords.include? @magicword
+    if not @@magicwords.include? @magicword
       redirect_to "/"
     end
  
@@ -35,9 +35,15 @@ class CprController < ApplicationController
   end
 
   def manage
+    if not @@management_magicwords.include? @magicword
+      redirect_to "/"
+    end
   end
 
   def list
+    if not @@management_magicwords.include? @magicword
+      redirect_to "/"
+    end
     @sessions = Session.find(:all).sort {|a,b| a.name <=> b.name}
     @people = Person.find(:all).sort {|a,b| a.name <=> b.name}
     @now = Time.now.asctime

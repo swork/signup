@@ -2,6 +2,11 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+
+  @@management_magicwords = ['victoria']
+  @@user_magicwords = ['ropeline']
+  @@magicwords = @@management_magicwords + @@user_magicwords
+
   helper :all # include all helpers, all the time
 
   before_filter :establish_magicword
@@ -14,19 +19,6 @@ class ApplicationController < ActionController::Base
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
-
-
-  def management_magicwords
-    ['victoria']
-  end
-
-  def user_magicwords
-    ['ropeline']
-  end
-
-  def magicwords
-    management_magicwords + user_magicwords
-  end
 
   # In lieu of full legitimate authentication, just keep a set of
   # obscure magicwords and determine access and initial dispatch on
