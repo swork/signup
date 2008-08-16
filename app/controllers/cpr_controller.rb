@@ -14,7 +14,10 @@ class CprController < ApplicationController
     if not @@magicwords.include? @magicword
       redirect_to "/"
     end
- 
+
+    # this seems to get overridden later, so has no effect
+    response.headers["Cache-Control"] = "no-cache"
+
     sall = Session.find(:all)
     sids = sall.map {|s| s.id}
     @people = Person.find(:all).select {|p| not sids.member? p.session_id}    

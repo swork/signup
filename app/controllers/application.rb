@@ -30,6 +30,8 @@ class ApplicationController < ActionController::Base
       cookies[:magicword] = @magicword # remember for next request
     elsif not cookies[:magicword].nil?
       @magicword = cookies[:magicword]
+    else
+      @magicword = ''
     end
   end
 
