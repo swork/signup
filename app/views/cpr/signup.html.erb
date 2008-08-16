@@ -122,9 +122,18 @@
       }
       
     </style>
-    <script type="text/javascript" src="javascripts/prototype.js"></script>
-    <script type="text/javascript" src="javascripts/effects.js"></script>
+<!-- <script type="text/javascript" src="javascripts/prototype.js"></script>
+    <script type="text/javascript" src="javascripts/effects.js"></script> -->
     <script type="text/javascript">
+      function resize(an_id, delta, minimum, maximum) {
+        var elem = document.getElementById(an_id);
+        var size = elem.size
+        if ((delta < 0 && size > minimum) || (delta > 0 && size < maximum)) {
+          elem.size = size + delta
+	  return true;
+	}
+        return false;
+      }
     </script>
   </head>
   <body>
@@ -181,7 +190,11 @@
           
           <ol>          
             <li>
-              <h2>Click to highlight your name</h2>
+              <h2>
+		Click to highlight your name
+		<input type="button" onclick="resize('person_id',3,4,30);" value="+" />
+		<input type="button" onclick="resize('person_id',-1,4,30);" value="-" />
+	      </h2>
 	      <%= select_tag("person_id", @people_options_string, :size => "5") %>
             </li>
 
