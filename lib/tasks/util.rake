@@ -3,7 +3,6 @@ require 'DataFrame'
 
 namespace :util do
 
-
   def pr s
     print s unless not ENV['QUIET'].nil?
   end
@@ -18,10 +17,22 @@ namespace :util do
     get_frame filename
   end
 
+  def get_sessions
+    filename = 'PatrolCPRSessionsA.csv'
+    filename = ENV['FILENAME'] if not ENV['FILENAME'].nil?
+    get_frame filename
+  end
+
   desc "Load and print the People roster .csv to check syntax"
   task :check_people do
     people = get_people
     p people
+  end
+
+  desc "Load and print Sessions .csv to check syntax"
+  task :check_sessions do
+    sessions = get_sessions
+    p sessions
   end
 
   desc "Count people assigned to sessions"
@@ -45,7 +56,12 @@ namespace :util do
     pr "Wiped out all #{Person.delete_all} People\n"
   end
 
-  desc "Stuff .csv info into db, wiping it first"
+  desc "Wipe out all Sessions from db"
+  task :wipe_Sessions => [ :environment, :check_no_assignments ] do
+    pr "Wiped out all #{Session.delete_all} Sessions\n"
+  end
+
+  desc "Stuff People .csv info into db, wiping it first"
   task :load_people => [ :environment, :wipe_People ] do
     people = get_people
     for i in 0..(people.rows.size-1)
@@ -59,6 +75,19 @@ namespace :util do
     end
     collection = Person.find :all
     pr "\nLoaded #{collection.size} People\n"
+  end
+
+  desc "Stuff Sessions .csv info into db, wiping it first"
+  task :load_sessions => [ :environment, :wipe_Sessions ] do
+    sessions = get_sessions
+    for i in 0..(sessions.rows.size-1)
+      name = sessions[i,'name'].strip
+      limit = sessions[i,'limit']
+      Session.create(:name => name, :max_attendees => limit)
+      pr '.'; STDOUT.flush
+    end
+    collection = Session.find :all
+    pr "\nLoaded #{collection.size} Sessions\n"
   end
 end
 
