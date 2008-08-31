@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(:version => 20080813045949) do
   create_table "people", :force => true do |t|
     t.string   "name"
     t.integer  "session_id"
+    t.string   "phone"
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

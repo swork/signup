@@ -3,6 +3,8 @@ class CreatePeople < ActiveRecord::Migration
     create_table :people do |t|
       t.string :name
       t.integer :session_id, :default => nil
+      t.string :phone
+      t.string :email
       t.timestamps
     end
   end
