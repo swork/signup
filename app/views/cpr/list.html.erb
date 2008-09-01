@@ -5,7 +5,9 @@
   <h3><%= s.name %></h3>
   <ol>
     <% for p in @people.select {|p| p.session_id == s.id } do %>
-    <li><%= p.name %></li>
+    <li><%= p.name %> 
+      (<%= p.email.size > 0 ? p.email : 'no email' %>,
+      <%= p.phone.size > 0 ? p.phone :  'no phone' %>)</li>
     <% end %>
   </ol>
   <% end %>
