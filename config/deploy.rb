@@ -13,6 +13,11 @@ set :mongrel_conf, "#{current_path}/config/mongrel_cluster.yml"
 # your SCM below:
 set :scm, :git
 
+set :ssh_options, {:forward_agent => true}
+on :start do
+  `ssh-add`
+end
+
 role :web, "cpr.renlabs.com"
 role :app, "cpr.renlabs.com"
 role :db,  "cpr.renlabs.com", :primary => true
