@@ -11,13 +11,13 @@ namespace :util do
     DataFrame.new filename, { 'expect_header' => 1 }
   end
 
-  def get_people
+  def get_people_csv
     filename = 'PatrolRoster07-08CPR.csv'
     filename = ENV['FILENAME'] if not ENV['FILENAME'].nil?
     get_frame filename
   end
 
-  def get_sessions
+  def get_sessions_csv
     filename = 'PatrolCPRSessionsA.csv'
     filename = ENV['FILENAME'] if not ENV['FILENAME'].nil?
     get_frame filename
@@ -25,13 +25,13 @@ namespace :util do
 
   desc "Load and print the People roster .csv to check syntax"
   task :check_people do
-    people = get_people
+    people = get_people_csv
     p people
   end
 
   desc "Load and print Sessions .csv to check syntax"
   task :check_sessions do
-    sessions = get_sessions
+    sessions = get_sessions_csv
     p sessions
   end
 
@@ -63,7 +63,7 @@ namespace :util do
 
   desc "Stuff People .csv info into db, wiping it first"
   task :load_people => [ :environment, :wipe_People ] do
-    people = get_people
+    people = get_people_csv
     for i in 0..(people.rows.size-1)
       if people[i,'CPR'] != ''
         name = [people[i,'FIRST'], people[i,'LAST']].join(' ').strip
@@ -79,7 +79,7 @@ namespace :util do
 
   desc "Stuff Sessions .csv info into db, wiping it first"
   task :load_sessions => [ :environment, :wipe_Sessions ] do
-    sessions = get_sessions
+    sessions = get_sessions_csv
     for i in 0..(sessions.rows.size-1)
       name = sessions[i,'name'].strip
       limit = sessions[i,'limit']
