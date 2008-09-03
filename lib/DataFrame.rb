@@ -2,7 +2,7 @@
 # statistics programming language.  Models a 2-dimensional table with 
 # row and column labels.
 
-require 'CSV'
+require 'csv'
 
 class DataFrame
   attr_accessor :col_names, :row_names, :rows
