@@ -47,60 +47,16 @@ a:hover {
           clear: both;
           }
 
-
-#header, #about, #getting-started {
-                                    padding-left: 75px;
-                                    padding-right: 30px;
-                                    }
-
-
-#header {
-          background-image: url("/images/snow_slides_easily.jpeg");
-          background-repeat: no-repeat;
-          background-position: top right;
-          height: 100px;
+#header { 
+          height: 64px;
           }
+
 #header h1, #header h2 {margin: 0}
 #header h2 {
              color: #888;
              font-weight: normal;
              font-size: 16px;
              }
-
-
-#about h3 {
-            margin: 0;
-            margin-bottom: 10px;
-            font-size: 14px;
-            }
-
-#about-content {
-                 background-color: #ffd;
-                 border: 1px solid #fc0;
-                 margin-left: -11px;
-                 }
-#about-content table {
-                       margin-top: 10px;
-                       margin-bottom: 10px;
-                       font-size: 11px;
-                       border-collapse: collapse;
-                       }
-#about-content td {
-                    padding: 10px;
-                    padding-top: 3px;
-                    padding-bottom: 3px;
-                    }
-#about-content td.name  {color: #555}
-#about-content td.value {color: #000}
-
-#about-content.failure {
-                         background-color: #fcc;
-                         border: 1px solid #f00;
-                         }
-#about-content.failure p {
-                           margin: 0;
-                           padding: 10px;
-                           }
 
 
 #getting-started {
@@ -121,7 +77,7 @@ a:hover {
                       }
 #getting-started ol {
                       margin-left: 0;
-                      padding-left: 0;
+                      padding-left: 2em;
                       }
 #getting-started li {
                       font-size: 18px;

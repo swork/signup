@@ -24,17 +24,18 @@ class CprController < ApplicationController
 
     @sessions = sall.select {|s| s.space_remaining > 0}
 
+    @guts = "signup"
     if @sessions.empty? or @people.empty?
-      render :action => "nomore"
+      @guts = "toolate"
+    else
+      @sessions = @sessions.sort {|a,b| a.name <=> b.name}
+      session_options = @sessions.map{|s| "<option value=\"#{s.id}\">#{s.description}</option>"}
+      @session_options_string = session_options.join "\n"
+
+      @people = @people.sort {|a,b| a.name <=> b.name}
+      people_options = @people.map {|p| "<option value=\"#{p.id}\">#{p.name}</option>"}
+      @people_options_string = people_options.join "\n"
     end
-
-    @sessions = @sessions.sort {|a,b| a.name <=> b.name}
-    session_options = @sessions.map{|s| "<option value=\"#{s.id}\">#{s.description}</option>"}
-    @session_options_string = session_options.join "\n"
-
-    @people = @people.sort {|a,b| a.name <=> b.name}
-    people_options = @people.map {|p| "<option value=\"#{p.id}\">#{p.name}</option>"}
-    @people_options_string = people_options.join "\n"
   end
 
   def manage

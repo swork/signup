@@ -1,0 +1,27 @@
+	  <% form_tag '/alldone/record' do -%>
+          <h1>Getting in</h1>
+          <h2>Here&rsquo;s how to get signed up for a CPR session:</h2>
+          
+          <ol>          
+            <li>
+              <h2>
+		Click to highlight your name
+		<input type="button" onclick="resize('person_id',3,4,30);" value="+" />
+		<input type="button" onclick="resize('person_id',-1,4,30);" value="-" />
+	      </h2>
+	      <%= select_tag("person_id", @people_options_string, :size => "5") %>
+	      <p>Names disappear from list once signed up.</p>
+            </li>
+
+            <li>
+              <h2>Click to highlight a session</h2>
+	      <%= select_tag("session_id", @session_options_string, :size => "4") %>
+	      <p>Sessions disappear from list when full.</p>
+            </li>
+            
+            <li>
+              <h2>Click Okay</h2>
+	      <input type="submit" value="Okay"> <p>(or just close this browser window to quit without making a reservation.)
+            </li>
+          </ol>
+	  <% end -%>

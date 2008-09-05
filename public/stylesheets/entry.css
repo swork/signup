@@ -1,0 +1,15 @@
+#header, #getting-started {
+                            padding-left: 75px;
+                            padding-right: 30px;
+                            }
+
+#getting-started ol { 
+                      padding-left: 0;
+                      }
+
+#header { 
+          background-image: url("/images/snow_slides_easily.jpeg");          
+          background-repeat: no-repeat;
+          background-position: top right;
+          height: 100px;
+          }
