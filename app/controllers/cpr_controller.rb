@@ -28,7 +28,7 @@ class CprController < ApplicationController
     if @sessions.empty? or @people.empty?
       @guts = "toolate"
     else
-      @sessions = @sessions.sort {|a,b| a.name <=> b.name}
+      @sessions = @sessions.sort {|a,b| a.id <=> b.id}
       session_options = @sessions.map{|s| "<option value=\"#{s.id}\">#{s.description}</option>"}
       @session_options_string = session_options.join "\n"
 
