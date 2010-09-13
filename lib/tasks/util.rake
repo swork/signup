@@ -12,7 +12,7 @@ namespace :util do
   end
 
   def get_people_csv
-    filename = 'PatrolRoster07-08CPR.csv'
+    filename = 'PatrolRosterCPR.csv'
     filename = ENV['FILENAME'] if not ENV['FILENAME'].nil?
     get_frame filename
   end
